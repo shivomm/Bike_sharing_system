@@ -29,6 +29,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -100,6 +101,19 @@ mlogout=(Button)findViewById(R.id.logout);
                     getAssigenCustomerPickUplocation();
 
                 }
+                else
+                {
+                    customerId="";
+                    if(pickMarker!=null)
+                    {
+                        pickMarker.remove();
+                    }
+                    if(assigCustomerPickupLocationListener!=null) {
+                        assigCustomerPickupLocation.removeEventListener(assigCustomerPickupLocationListener);
+                    }
+
+
+                }
             }
 
             @Override
@@ -110,14 +124,16 @@ mlogout=(Button)findViewById(R.id.logout);
 
 
     }
-
+  Marker pickMarker;
+    DatabaseReference assigCustomerPickupLocation;
+    private ValueEventListener assigCustomerPickupLocationListener;
     private void getAssigenCustomerPickUplocation() {
-        DatabaseReference assigCustomerPickupLocation=FirebaseDatabase.getInstance().getReference().child("customerRequest").child(customerId).child("l");
-        assigCustomerPickupLocation.addValueEventListener(new ValueEventListener() {
+       assigCustomerPickupLocation=FirebaseDatabase.getInstance().getReference().child("customerRequest").child(customerId).child("l");
+        assigCustomerPickupLocationListener=assigCustomerPickupLocation.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                 if(dataSnapshot.exists())
+                 if(dataSnapshot.exists() &&!customerId.equals(""))
                  {
                      List<Object>map=(List<Object>)dataSnapshot.getValue();
                      double locationLat=0;
@@ -132,7 +148,7 @@ mlogout=(Button)findViewById(R.id.logout);
                          locationLng=Double.parseDouble(map.get(1).toString());
                      }
                      LatLng driverLatlng=new LatLng(locationLat,locationLng);
-                     mMap.addMarker(new MarkerOptions().position(driverLatlng).title("Pickup Location"));
+                     pickMarker=mMap.addMarker(new MarkerOptions().position(driverLatlng).title("Pickup Location"));
 
                  }
             }
