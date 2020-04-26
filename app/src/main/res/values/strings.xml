@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">BikeShringSystem</string>
+    <string name="app_name">Motoride</string>
     <string name="title_activity_rider_map">Map</string>
     <string name="title_activity_customer_map">Map</string>
+    <string name="title_activity_customer">Map</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

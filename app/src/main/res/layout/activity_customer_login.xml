@@ -1,64 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/wallpaper1"
+    android:orientation="vertical"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:orientation="vertical"
-    android:background="@color/colorAccent"
     tools:context=".CustomerLogin">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="cursive"
-        android:textSize="35dp"
-        android:layout_marginTop="70dp"
-        android:textColor="@android:color/holo_orange_dark"
-        android:gravity="center"
-        android:text="Wellcome to Easy Ride!"
-        ></TextView>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="150dp"
+        app:srcCompat="@drawable/user" />
+
     <EditText
         android:id="@+id/customeremail"
-        android:paddingLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/black"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="100dp"
         android:hint="Email Address"
         android:inputType="textEmailAddress"
         android:paddingVertical="10dp"
-        android:textColor="@android:color/white"
-        android:textColorHint="@android:color/white"
-        ></EditText>
-    <EditText
-        android:textColor="@android:color/white"
-        android:id="@+id/Customerpass"
         android:paddingLeft="10dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"></EditText>
+
+    <EditText
+        android:id="@+id/Customerpass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/black"
         android:layout_marginTop="20dp"
         android:hint="password"
         android:inputType="numberPassword"
         android:paddingVertical="10dp"
-        android:textColorHint="@android:color/white"
-        ></EditText>
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"></EditText>
+
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Login"
         android:id="@+id/CLogin"
-        android:textColorHint="@android:color/black"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
         android:layout_marginTop="50dp"
-        ></Button>
+        android:background="@drawable/corner_radius"
+        android:hint="Login"
+        android:textColorHint="#FFFFFF"></Button>
+
     <TextView
+        android:id="@+id/CsignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Here ? Create Account"
-        android:gravity="center"
-        android:id="@+id/CsignUp"
-        android:textColor="@android:color/holo_orange_dark"
         android:layout_marginTop="10dp"
-        ></TextView>
+        android:gravity="center"
+        android:text="New Here ? Create Account"
+        android:textColor="#005804"></TextView>
+
+
 </LinearLayout>

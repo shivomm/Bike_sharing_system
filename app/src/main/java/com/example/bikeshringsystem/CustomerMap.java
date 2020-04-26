@@ -145,7 +145,7 @@ public class CustomerMap extends FragmentActivity implements OnMapReadyCallback 
                                 Toast.makeText(CustomerMap.this, "Location is Not saved ", Toast.LENGTH_SHORT).show();
                             } else {
                                 pickupLocation = new LatLng(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude());
-                               pickupMarker=mMap.addMarker(new MarkerOptions().position(pickupLocation).title("PickupHere"));
+                                pickupMarker=mMap.addMarker(new MarkerOptions().position(pickupLocation).title("PickupHere"));
                                 getClosestDriver();
                                 mRequest.setText("Getting your Driver...");
 
@@ -172,7 +172,7 @@ public class CustomerMap extends FragmentActivity implements OnMapReadyCallback 
         }
 
     }
-          private int radius=1;
+    private int radius=1;
     private boolean driverFound=false;
     private String driverFoundID;
     GeoQuery geoQuery;
@@ -180,7 +180,7 @@ public class CustomerMap extends FragmentActivity implements OnMapReadyCallback 
         DatabaseReference driverLocation=FirebaseDatabase.getInstance().getReference().child("DriverAvailable");
         GeoFire geoFire=new GeoFire(driverLocation);
         geoQuery=geoFire.queryAtLocation(new GeoLocation(pickupLocation.latitude,pickupLocation.longitude),radius);
-       geoQuery.removeAllListeners();
+        geoQuery.removeAllListeners();
         geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
             @Override
             public void onKeyEntered(String key, GeoLocation location) {
@@ -258,20 +258,20 @@ public class CustomerMap extends FragmentActivity implements OnMapReadyCallback 
                           mDriverMarker.remove();
                       }*/
                     mMap.addMarker(new MarkerOptions().position(driverLatlng).title("YourDriver").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_bike)));
-                      Location loc1=new Location("");
-                      loc1.setLatitude(pickupLocation.latitude);
-                      loc1.setLongitude(pickupLocation.longitude);
-                      Location loc2=new Location("");
-                        loc2.setLatitude(driverLatlng.latitude);
-                        loc2.setLongitude(driverLatlng.longitude);
-                        float distance=loc1.distanceTo(loc2);
-                        if(distance<100.0)
-                        {
-                            mRequest.setText("Driver Here ");
-                        }
-                          else {
-                            mRequest.setText("Driver Found  " + String.valueOf(distance));
-                        }
+                    Location loc1=new Location("");
+                    loc1.setLatitude(pickupLocation.latitude);
+                    loc1.setLongitude(pickupLocation.longitude);
+                    Location loc2=new Location("");
+                    loc2.setLatitude(driverLatlng.latitude);
+                    loc2.setLongitude(driverLatlng.longitude);
+                    float distance=loc1.distanceTo(loc2);
+                    if(distance<100.0)
+                    {
+                        mRequest.setText("Driver Here ");
+                    }
+                    else {
+                        mRequest.setText("Driver Found  " + String.valueOf(distance));
+                    }
 
 
 

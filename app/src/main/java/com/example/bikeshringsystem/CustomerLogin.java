@@ -85,7 +85,7 @@ public class CustomerLogin extends AppCompatActivity {
                         {
                             progressDoalog.dismiss();
                             Toast.makeText(CustomerLogin.this,"Login Success full",Toast.LENGTH_LONG).show();
-                            Intent intent=new Intent(CustomerLogin.this,CustomerMap.class);
+                            Intent intent=new Intent(CustomerLogin.this,Customer.class);
                             startActivity(intent);
                             finish();
                             return;

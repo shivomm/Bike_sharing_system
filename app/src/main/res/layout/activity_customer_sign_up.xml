@@ -1,103 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/wallpaper1"
+    android:orientation="vertical"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:orientation="vertical"
-    android:background="@color/colorAccent"
     tools:context=".CustomerSignUp">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="cursive"
-        android:textSize="25dp"
         android:layout_marginTop="70dp"
+        android:fontFamily="cursive"
         android:gravity="center"
         android:text="Wellcome to Easy Ride!"
-        ></TextView>
+        android:textSize="25dp"></TextView>
+
     <EditText
-        android:textColor="@android:color/white"
         android:id="@+id/CustomerName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/black"
         android:layout_marginTop="60dp"
         android:hint="Full name"
-        android:paddingLeft="10dp"
         android:paddingVertical="10dp"
-        android:textColorHint="@android:color/white"
-        ></EditText>
-    <EditText
-        android:textColor="@android:color/white"
         android:paddingLeft="10dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"></EditText>
+
+    <EditText
         android:id="@+id/CustomerEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/black"
         android:layout_marginTop="20dp"
         android:hint="Email Address"
         android:inputType="textEmailAddress"
         android:paddingVertical="10dp"
-
-        android:textColorHint="@android:color/white"
-        ></EditText>
-    <EditText
-        android:textColor="@android:color/white"
         android:paddingLeft="10dp"
+        android:textColor="@android:color/white"
+
+        android:textColorHint="@android:color/white"></EditText>
+
+    <EditText
         android:id="@+id/CustomerPass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/black"
         android:layout_marginTop="20dp"
         android:hint="password"
         android:inputType="numberPassword"
         android:paddingVertical="10dp"
-        android:textColorHint="@android:color/white"
-        ></EditText>
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"></EditText>
+
     <EditText
         android:id="@+id/Customerrpass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/black"
         android:layout_marginTop="20dp"
-        android:paddingLeft="10dp"
         android:hint="Repeat password"
         android:inputType="numberPassword"
         android:paddingVertical="10dp"
-        android:textColor="@android:color/white"
-        android:textColorHint="@android:color/white"
-        ></EditText>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/black"
-        android:layout_marginTop="20dp"
         android:paddingLeft="10dp"
         android:textColor="@android:color/white"
-        android:id="@+id/CustomerPhoneNumber"
-        android:hint="Phone Number"
+        android:textColorHint="@android:color/white"></EditText>
 
+    <EditText
+        android:id="@+id/CustomerPhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Phone Number"
         android:inputType="phone"
         android:paddingVertical="10dp"
-        android:textColorHint="@android:color/white"
-        ></EditText>
+
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"></EditText>
+
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="REGISTER"
         android:id="@+id/CReg"
-        android:textColorHint="@android:color/black"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
         android:layout_marginTop="30dp"
-        ></Button>
+        android:background="@drawable/corner_radius"
+        android:hint="REGISTER"
+        android:textColorHint="#FFFFFF"></Button>
+
     <TextView
+        android:id="@+id/clng1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Already Registered? Login here"
-        android:gravity="center"
-        android:id="@+id/clng1"
-        android:textColor="@android:color/holo_blue_dark"
         android:layout_marginTop="10dp"
-        ></TextView>
+        android:gravity="center"
+        android:text="Already Registered? Login here"
+        android:textColor="#005005"></TextView>
 </LinearLayout>
