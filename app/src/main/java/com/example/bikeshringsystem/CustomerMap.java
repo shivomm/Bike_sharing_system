@@ -54,10 +54,10 @@ public class CustomerMap extends FragmentActivity implements OnMapReadyCallback 
     private FusedLocationProviderClient mFusedLocationProviderClient;
     private Location mLastKnownLocation;
     private LocationCallback locationCallback;
-    private final float DEFAULT_ZOOM = 12;
+    private final float DEFAULT_ZOOM = 10;
     private boolean mLocationPermissionGranded;
     public static final int PERMISSION_REQUEST_CODE = 9001;
-    private Button mlogout,mRequest;
+    private Button mlogout,mRequest,mSetting;
     private LatLng pickupLocation;
     private boolean requestBol=false;
     private  Marker pickupMarker;
@@ -71,6 +71,17 @@ public class CustomerMap extends FragmentActivity implements OnMapReadyCallback 
         mapFragment.getMapAsync(this);
         mlogout = (Button) findViewById(R.id.clogout);
         mRequest = (Button) findViewById(R.id.Request);
+        mSetting=(Button)findViewById(R.id.setting);
+
+        mSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CustomerMap.this, CustomerSettingActivity.class);
+                startActivity(intent);
+                return;
+
+            }
+        });
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(CustomerMap.this);
 
 
@@ -159,6 +170,7 @@ public class CustomerMap extends FragmentActivity implements OnMapReadyCallback 
                 }
             }
         }
+
     }
           private int radius=1;
     private boolean driverFound=false;
@@ -181,7 +193,7 @@ public class CustomerMap extends FragmentActivity implements OnMapReadyCallback 
                     map.put("CustomerRideID",customerID);
                     driverRef.updateChildren(map);
 
-                    mRequest.setText("Loooking for Driver Location....");
+                    mRequest.setText("Looking for Driver Location....");
                     getDriverLocation();
 
                 }

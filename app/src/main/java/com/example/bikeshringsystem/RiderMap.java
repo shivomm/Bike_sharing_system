@@ -8,12 +8,16 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import com.bumptech.glide.Glide;
 import com.firebase.geofire.GeoFire;
 import com.firebase.geofire.GeoLocation;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -42,6 +46,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
+import java.util.Map;
 
 
 public class RiderMap extends FragmentActivity implements OnMapReadyCallback {
@@ -55,6 +60,9 @@ public class RiderMap extends FragmentActivity implements OnMapReadyCallback {
     public static final int PERMISSION_REQUEST_CODE = 9001;
     private Button mlogout,mRequest;
     private String customerId="";
+    private LinearLayout mCostumerInfo;
+    private ImageView mCostumerProfileImage;
+    private TextView mCostumerName,mCostumerPhone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,8 +71,12 @@ public class RiderMap extends FragmentActivity implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-mlogout=(Button)findViewById(R.id.logout);
-        mlogout.setOnClickListener(new View.OnClickListener() {
+             mlogout=(Button)findViewById(R.id.logout);
+             mCostumerInfo=(LinearLayout)findViewById(R.id.CustomerInfo);
+             mCostumerProfileImage=(ImageView)findViewById(R.id.customerProfileImage);
+             mCostumerName=(TextView)findViewById(R.id.CustomerName);
+        mCostumerPhone=(TextView)findViewById(R.id.CustomerPhone);
+                 mlogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
@@ -98,7 +110,10 @@ mlogout=(Button)findViewById(R.id.logout);
                 if(dataSnapshot.exists())
                 {
                     customerId=dataSnapshot.getValue().toString();
+                    getAssigenCustomerInfo();
                     getAssigenCustomerPickUplocation();
+
+
 
                 }
                 else
@@ -111,7 +126,10 @@ mlogout=(Button)findViewById(R.id.logout);
                     if(assigCustomerPickupLocationListener!=null) {
                         assigCustomerPickupLocation.removeEventListener(assigCustomerPickupLocationListener);
                     }
-
+                    mCostumerInfo.setVisibility(View.GONE);
+                    mCostumerName.setText("");
+                    mCostumerPhone.setText("");
+                    mCostumerProfileImage.setImageResource(R.mipmap.ic_default_user);
 
                 }
             }
@@ -124,7 +142,47 @@ mlogout=(Button)findViewById(R.id.logout);
 
 
     }
-  Marker pickMarker;
+
+    private void getAssigenCustomerInfo() {
+
+        DatabaseReference mCustomerDataBase= FirebaseDatabase.getInstance().getReference("Users").child("Customers").child(customerId);
+
+        mCustomerDataBase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists() && dataSnapshot.getChildrenCount()>0)
+                {
+                    Map<String,Object> map=(Map<String,Object>)dataSnapshot.getValue();
+                    if(map.get("Name")!=null)
+                    {
+                        String name=map.get("Name").toString();
+                        mCostumerName.setText("Name: "+name);
+
+                    }
+                    if(map.get("Phone")!=null)
+                    {
+                        String phone=map.get("Phone").toString();
+                        mCostumerPhone.setText("Phone No: "+phone);
+
+                    }
+                   if(map.get("profileImageUrl")!=null)
+                    {
+
+                        Glide.with(getApplication()).load( map.get("profileImageUrl").toString()).into(mCostumerProfileImage);
+
+                    }
+                    mCostumerInfo.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    Marker pickMarker;
     DatabaseReference assigCustomerPickupLocation;
     private ValueEventListener assigCustomerPickupLocationListener;
     private void getAssigenCustomerPickUplocation() {
@@ -216,8 +274,8 @@ mlogout=(Button)findViewById(R.id.logout);
 
                                  switch(customerId) {
                                      case "":
-                                         if (!(geoFireWorking == null)) {
-                                             geoFireWorking.removeLocation(userId, new GeoFire.CompletionListener() {
+                                         //if (!(geoFireWorking == null)) {
+                                            /* geoFireWorking.removeLocation(userId, new GeoFire.CompletionListener() {
                                                  @Override
                                                  public void onComplete(String key, DatabaseError error) {
                                                      if (error != null) {
@@ -229,7 +287,7 @@ mlogout=(Button)findViewById(R.id.logout);
                                                      }
                                                  }
                                              });
-                                         }
+                                         }*/
                                  // catch (Exception e){
                                        //  e.printStackTrace();
                                      //}
@@ -245,7 +303,7 @@ mlogout=(Button)findViewById(R.id.logout);
                                          });
                                           break;
                                           default:
-                                              if (!(geoFireAvailable == null)) {
+                                              /*if (!(geoFireAvailable == null)) {
                                                   geoFireAvailable.removeLocation(userId, new GeoFire.CompletionListener() {
                                                       @Override
                                                       public void onComplete(String key, DatabaseError error) {
@@ -258,7 +316,7 @@ mlogout=(Button)findViewById(R.id.logout);
                                                           }
                                                       }
                                                   });
-                                              }
+                                              }*/
                                          geoFireWorking.setLocation(userId, new GeoLocation(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude()), new GeoFire.CompletionListener() {
                                              @Override
                                              public void onComplete(String key, DatabaseError error) {
