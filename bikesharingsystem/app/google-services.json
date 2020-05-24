@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "9223814757",
+    "firebase_url": "https://motoride-c2573.firebaseio.com",
+    "project_id": "motoride-c2573",
+    "storage_bucket": "motoride-c2573.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9223814757:android:93dd227c8a4e4ac841d08c",
+        "android_client_info": {
+          "package_name": "com.example.bikesharingsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "9223814757-dcmvptgvbnuaesamlueud463ea4iemtg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bikesharingsystem",
+            "certificate_hash": "dfd5bf9a67e7113bfdead3fa2914edcfd5980387"
+          }
+        },
+        {
+          "client_id": "9223814757-ibe0qvifmpb1hdk6jbj3ho2qfl9nm6n2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDINrQELUEvjLcQLBaB-GJP8Gz6aMDhh9g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "9223814757-ibe0qvifmpb1hdk6jbj3ho2qfl9nm6n2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
