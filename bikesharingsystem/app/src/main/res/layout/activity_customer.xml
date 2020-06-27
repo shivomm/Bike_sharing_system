@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".Customer">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#CD5026A0"
+        android:elevation="4dp"
+        app:title="Motoride"
+        app:titleTextColor="@color/quantum_white_100"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="34dp"
+        app:cardCornerRadius="7dp"
+        app:layout_constraintBottom_toTopOf="@+id/map"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:hint="Enter Source"
+            android:inputType="textPersonName"
+            android:paddingLeft="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/button1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.666" />
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:ems="10"
+            android:hint="Enter destination"
+            android:inputType="textPersonName"
+            android:paddingLeft="5dp" />
+
+        <ImageButton
+            android:id="@+id/button1"
+            android:layout_width="40dp"
+            android:layout_height="47dp"
+            android:layout_marginLeft="300dp"
+            android:background="#DCFFFFFF"
+            android:src="@drawable/search" />
+
+        <ImageButton
+            android:id="@+id/button2"
+            android:layout_width="43dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="50dp"
+            android:background="#D3FFFFFF"
+            android:src="@drawable/search" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="20dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/destination" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="20dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/start" />
+
+
+    </androidx.cardview.widget.CardView>
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/cardView"
+        android:layout_marginTop="-2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:context=".Customer"></fragment>
+
+    <Button
+        android:id="@+id/request_ride"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@id/map"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/corner_radius"
+        android:enabled="false"
+        android:onClick="requestRide"
+        android:text="REQUEST RIDE"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
